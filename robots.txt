@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://morbroxrey.github.io/home-site-aiyouxi-com-cn/sitemap.xml
