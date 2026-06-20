@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南｜老哥社区</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafafa;
+            color: #2c2c2c;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+            line-height: 1.7;
+            padding: 2.4rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 680px;
+            width: 100%;
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+            color: #1a1a1a;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #6e6e6e;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-top: 2.4rem;
+            margin-bottom: 0.75rem;
+            color: #1f1f1f;
+            border-left: 3px solid #cbd5e0;
+            padding-left: 0.75rem;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-top: 1.6rem;
+            margin-bottom: 0.4rem;
+            color: #2e2e2e;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 0.98rem;
+            color: #3a3a3a;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+            transition: border-color 0.2s;
+        }
+
+        a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* 卡片（极简留白风） */
+        .card-simple {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #efefef;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: #f9f9fb;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #ebebeb;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+            color: #1e1e1e;
+        }
+
+        .feature-item span {
+            font-size: 0.9rem;
+            color: #5a5a5a;
+        }
+
+        .pill {
+            display: inline-block;
+            background: #eef2f6;
+            color: #2b3b4c;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            font-weight: 450;
+            letter-spacing: 0.01em;
+            margin-right: 0.3rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px dashed #e0e0e0;
+            padding: 0.8rem 0;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-item summary {
+            font-weight: 470;
+            cursor: pointer;
+            color: #2c2c2c;
+            padding: 0.2rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-item summary::before {
+            content: "▸";
+            color: #6f8fbe;
+            font-size: 0.85rem;
+            transition: transform 0.15s;
+        }
+
+        .faq-item[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-item p {
+            margin: 0.5rem 0 0.2rem 1.2rem;
+            font-size: 0.92rem;
+            color: #4b4b4b;
+        }
+
+        .footnote {
+            margin-top: 2.8rem;
+            font-size: 0.85rem;
+            color: #7a7a7a;
+            border-top: 1px solid #eaeaea;
+            padding-top: 1.5rem;
+            text-align: left;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ececec;
+            margin: 1.6rem 0;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            background: #f4f6f9;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            color: #3d4f63;
+            margin-bottom: 1.2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body { padding: 1.5rem 0.9rem; }
+            h1 { font-size: 1.8rem; }
+            .card-simple { padding: 1.2rem; }
+            .feature-item { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区域：简明指南 -->
+    <div class="tagline">📘 一份生活化的使用备忘</div>
+    <h1>老哥社区 · 简明指南</h1>
+    <p class="subhead">从访问提醒到日常参考，帮你更快适应这里的氛围。</p>
+
+    <!-- 摘要式介绍 -->
+    <p><a href="https://cn-lgw.com">老哥社区</a>是一个以交流分享为主的线上空间，成员来自不同背景，话题涵盖日常见闻、实用经验与轻松讨论。这里没有刻板规则，但鼓励彼此尊重、真诚表达。如果你刚接触这个圈子，下面几段话可以帮你更快找到节奏。</p>
+
+    <!-- 亮点卡片：三个核心特点 -->
+    <h2>▎社区亮点</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <strong>🧩 多元话题</strong>
+            <span>从生活技巧到闲聊杂谈，总有人和你同频。</span>
+        </div>
+        <div class="feature-item">
+            <strong>🤝 低门槛参与</strong>
+            <span>不需复杂认证，阅读和互动都自然顺手。</span>
+        </div>
+        <div class="feature-item">
+            <strong>⚡ 信息流动快</strong>
+            <span>帖子更新频繁，热门内容实时可见。</span>
+        </div>
+    </div>
+
+    <!-- 使用建议：场景式提醒 -->
+    <h2>▎使用建议</h2>
+    <p>根据大多数成员的反馈，以下几个场景下的体验会比较好：</p>
+    <ul style="margin-left: 1.4rem; margin-bottom: 1.2rem; color: #3a3a3a; font-size: 0.97rem; list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 0.5rem;">• 日常通勤、休息间隙——浏览首页推荐，轻松无压力。</li>
+        <li style="margin-bottom: 0.5rem;">• 遇到具体问题（如工具推荐、经验参考）——直接搜索或发帖，通常很快有回应。</li>
+        <li style="margin-bottom: 0.5rem;">• 想要放松闲聊——话题广场里总有意外收获。</li>
+    </ul>
+    <p>同时也建议留意版块分类，这样更容易找到对胃口的讨论。别忘了，<a href="https://cn-lgw.com">老哥社区</a>的移动端适配做得不错，随时能用浏览器打开。</p>
+
+    <!-- 可信但克制的访问说明 -->
+    <h2>▎访问提醒</h2>
+    <div class="card-simple">
+        <p style="margin-bottom: 0.6rem;"><span class="pill">网络</span><span class="pill">设备</span><span class="pill">隐私小提示</span></p>
+        <p>社区不需要注册就能浏览大部分内容，但发言或互动需要简单创建账号。建议使用常用邮箱，并设置独立的密码。公共设备上使用后记得退出登录。</p>
+        <p>网站采用标准 HTTPS 连接，日常浏览数据有基础加密保护。不过在任何开放社区里，都建议你<strong>自行判断信息真实性</strong>，不轻信非官方链接或转账请求。</p>
+        <p>如果你碰到页面加载缓慢的情况，可以尝试刷新或换个时段再试，社区服务器偶尔会因流量高峰出现短暂波动。</p>
+    </div>
+
+    <!-- FAQ 摘要 与 句子式链接 -->
+    <h2>▎常见疑问 · 摘要</h2>
+    <details class="faq-item">
+        <summary>社区主要聊什么？</summary>
+        <p>生活经验、兴趣话题、实用工具、时事闲谈……多数内容由成员自发产生，没有固定分类限制。</p>
+    </details>
+    <details class="faq-item">
+        <summary>需要付费吗？</summary>
+        <p>完全免费。社区由爱好者维护，目前没有付费会员或隐藏收费项目。</p>
+    </details>
+    <details class="faq-item">
+        <summary>内容是否可靠？</summary>
+        <p>和所有 UGC 平台一样，建议保持合理怀疑。可以参考多个回复，或直接搜索验证。老哥社区里不少成员会主动补充来源。</p>
+    </details>
+    <details class="faq-item">
+        <summary>哪里可以找到老哥社区？</summary>
+        <p>直接在浏览器访问 <a href="https://cn-lgw.com">老哥社区</a> 即可，也可以把页面添加到书签方便日常打开。</p>
+    </details>
+
+    <hr>
+
+    <!-- 带链接的总结句子 -->
+    <p style="font-size: 0.97rem;">如果你已经大致了解了方向，不妨现在就去 <a href="https://cn-lgw.com">老哥社区</a> 里随便逛逛，看看今天的讨论合不合胃口。慢慢来，找到自己舒服的阅读位置就好。</p>
+
+    <!-- footer 区 -->
+    <div class="footnote">
+        <span>本页仅为社区介绍与使用参考，内容基于公开信息整理。具体功能以实际页面为准。</span>
+    </div>
+
+</div>
+</body>
+</html>
