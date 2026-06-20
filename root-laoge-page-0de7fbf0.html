@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老哥网 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f0eb;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            color: #1e1e1e;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-wrap {
+            max-width: 880px;
+            width: 100%;
+            background: #fffcf8;
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+        }
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.75rem; }
+            .page-wrap { padding: 2rem 1.25rem; }
+        }
+
+        /* 目录感布局 —— 章节标题借鉴文章目录风格 */
+        .site-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #8f8a82;
+            border-bottom: 1px solid #e5ddd6;
+            padding-bottom: 0.6rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .site-label span:last-child {
+            font-weight: 350;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: #221f1c;
+        }
+        .subhead {
+            font-size: 1rem;
+            color: #6b655e;
+            margin-bottom: 2.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e9e2da;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.2rem 0 2.8rem;
+        }
+        @media (max-width: 600px) {
+            .intro-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+
+        .section-card {
+            background: #f7f2ec;
+            border-radius: 16px;
+            padding: 1.6rem 1.4rem;
+            transition: background 0.15s;
+        }
+        .section-card h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-left: 4px solid #b8aa9c;
+            padding-left: 0.75rem;
+            margin-bottom: 0.9rem;
+            color: #2f2b27;
+        }
+        .section-card p, .section-card ul {
+            font-size: 0.95rem;
+            color: #3d3935;
+        }
+        .section-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .section-card ul li {
+            padding: 0.2rem 0 0.2rem 1.2rem;
+            position: relative;
+        }
+        .section-card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.1rem;
+            color: #a09080;
+            font-weight: bold;
+        }
+
+        .quote-block {
+            background: #ede7e0;
+            padding: 1.6rem 2rem;
+            border-radius: 18px;
+            margin: 2rem 0 2.2rem;
+            font-size: 1rem;
+            color: #2f2b27;
+            border-left: 5px solid #c7b7a8;
+            quotes: "“" "”" "‘" "’";
+        }
+        .quote-block::before {
+            content: open-quote;
+            font-size: 2.2rem;
+            line-height: 0.6;
+            vertical-align: -0.4rem;
+            color: #b0a092;
+            margin-right: 0.2rem;
+        }
+        .quote-block::after {
+            content: close-quote;
+            font-size: 2.2rem;
+            line-height: 0.6;
+            vertical-align: -0.4rem;
+            color: #b0a092;
+            margin-left: 0.1rem;
+        }
+
+        .info-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2.2rem 0 1.8rem;
+            padding: 1.8rem 0;
+            border-top: 1px solid #e5ddd6;
+            border-bottom: 1px solid #e5ddd6;
+        }
+        .info-item {
+            flex: 1 1 200px;
+        }
+        .info-item h3 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #575049;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.3rem;
+        }
+        .info-item p {
+            font-size: 0.95rem;
+            color: #3d3935;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1.6rem;
+        }
+        .faq-mini details {
+            border-bottom: 1px solid #ece5dd;
+            padding: 0.6rem 0;
+        }
+        .faq-mini details:first-of-type {
+            border-top: 1px solid #ece5dd;
+        }
+        .faq-mini summary {
+            font-weight: 450;
+            cursor: pointer;
+            color: #2f2b27;
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .faq-mini summary::before {
+            content: "▸";
+            font-size: 0.8rem;
+            color: #a09080;
+            transition: transform 0.15s;
+        }
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .faq-mini details p {
+            padding: 0.3rem 0 0.6rem 1.4rem;
+            font-size: 0.9rem;
+            color: #4b4540;
+        }
+
+        .link-sentence {
+            background: #f3ede6;
+            padding: 1.2rem 1.8rem;
+            border-radius: 14px;
+            margin: 2.2rem 0 0.2rem;
+            font-size: 0.98rem;
+            color: #2a2623;
+        }
+        .link-sentence a {
+            color: #2f5b6b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #a8b9c2;
+            transition: border-color 0.15s;
+        }
+        .link-sentence a:hover {
+            border-bottom-color: #2f5b6b;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            font-size: 0.8rem;
+            color: #9b938b;
+            text-align: right;
+            border-top: 1px solid #ede7e0;
+            padding-top: 1.4rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 目录感标记 -->
+    <div class="site-label">
+        <span>索引 · 知识库</span>
+        <span>root-laoge.com</span>
+    </div>
+
+    <h1>老哥网 · 用途速览</h1>
+    <div class="subhead">面向信息识别者的知识入口，聚合结构、说明与上下文参考。</div>
+
+    <!-- 双卡片：说明区 + 目录感 -->
+    <div class="intro-grid">
+        <div class="section-card">
+            <h2>说明区</h2>
+            <p><strong>老哥网</strong> 是一个围绕信息整理与参考线索的知识库式站点。内容以分类条目、实用说明和上下文提示为主，不依赖动态算法推荐，强调用户自主检索与判断。适合需要快速定位背景信息或核实基础概念的使用场景。</p>
+        </div>
+        <div class="section-card">
+            <h2>目录感 · 内容特征</h2>
+            <ul>
+                <li>结构化条目，减少无效浏览</li>
+                <li>引用来源与相关备注并行呈现</li>
+                <li>提示区嵌入关键上下文</li>
+                <li>信息层级清晰，降低理解成本</li>
+                <li>面向实用主义者的知识切片</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="quote-block">
+        提示区：使用本知识库时，建议先浏览分类索引，再结合自身问题定位具体条目。每个条目均包含简要定义、关联参考以及使用注意，避免孤立理解。
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="info-area">
+        <div class="info-item">
+            <h3>适用场景</h3>
+            <p>快速查阅术语背景、了解条目关联、对比不同信息片段的一致性。适合研究、写作、决策前的信息校准。</p>
+        </div>
+        <div class="info-item">
+            <h3>信息组织方式</h3>
+            <p>扁平化目录 + 交叉引用。每个主题独立成块，同时附有「参考上下文」「常见疑问」链接，形成网状知识索引。</p>
+        </div>
+        <div class="info-item">
+            <h3>与通常站点的区别</h3>
+            <p>不依赖首页信息流，不设突出推荐模块。用户可通过站内目录直接进入细分类目，减少噪声干扰。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <details>
+            <summary>老哥网主要适合哪些人使用？</summary>
+            <p>适合需要结构化工具体验的浏览者：如信息整理者、研究者、内容审核人员，以及偏好低干扰阅读环境的用户。</p>
+        </details>
+        <details>
+            <summary>内容更新频率如何？</summary>
+            <p>条目根据信息可靠性不定期修订，不追求频繁刷新。每次调整都会附带修订说明与参考源变更记录。</p>
+        </details>
+        <details>
+            <summary>是否有搜索或过滤功能？</summary>
+            <p>站内提供基于标签和分类的浏览方式，部分页面支持关键词定位，具体可参照对应功能区的提示。</p>
+        </details>
+    </div>
+
+    <!-- 自然嵌入链接的句子，可见文本严格等于「老哥网」 -->
+    <div class="link-sentence">
+        若想进一步查看条目索引与完整分类体系，可直接前往 <a href="https://root-laoge.com">老哥网</a> 的目录页，其中包含更细化的说明区、提示区与相关信息聚合。
+    </div>
+
+    <div class="footer-note">
+        基于知识库入口式布局 · 米白背景 · 版本索引
+    </div>
+
+</div>
+</body>
+</html>
